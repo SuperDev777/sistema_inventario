@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Articulos | Crear')
+@section('title', 'Articulos | Editar')
 
 @section('content')
 <div class="row mt-5">
@@ -10,12 +10,14 @@
                 Crear articulos
             </div>
             <div class="card-body">
-                <form action="{{ route('goods.store') }}" method="POST">
+                <form action="{{ route('goods.update') }}" method="POST">
                     @csrf
+                    {{ method_field('PUT') }}
                     <input type="hidden" value="{{ Auth::user()->id }}" name="users_id">
+                    <input type="hidden" value="{{ $good->id }}" name="id">
                     <div class="form-group">
                         <label for="">Codigo</label>
-                        <input type="number" class="form-control" name="codigo" value="{{ old('codigo') }}">
+                        <input type="number" class="form-control" name="codigo" value="{{ old('codigo', $good->codigo) }}">
                         @error('codigo')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -24,10 +26,10 @@
                         <label for="">Tipo:</label>
                         <select name="tipo" id="tipo" class="form-select">
                             <option selected disabled>Seleccione el tipo de articulo:</option>
-                            <option value="escritorio" @selected(old('tipo') == 'escritorio')>utiles de escritorio</option>
-                            <option value="limpieza" @selected(old('tipo') == 'limpieza')>limpieza</option>
-                            <option value="herramienta" @selected(old('tipo') == 'herramienta')>herramientas</option>
-                            <option value="red" @selected(old('tipo') == 'red')>red</option>
+                            <option value="escritorio" @selected(old('tipo', $good->tipo) == 'escritorio')>utiles de escritorio</option>
+                            <option value="limpieza" @selected(old('tipo', $good->tipo) == 'limpieza')>limpieza</option>
+                            <option value="herramienta" @selected(old('tipo', $good->tipo) == 'herramienta')>herramientas</option>
+                            <option value="red" @selected(old('tipo', $good->tipo) == 'red')>red</option>
                         </select>
                         @error('tipo')
                         <span class="text-danger">{{ $message }}</span>
@@ -35,21 +37,21 @@
                     </div>
                     <div class="form-group">
                         <label for="">Marca</label>
-                        <input type="text" class="form-control" name="marca" value="{{ old('marca') }}">
+                        <input type="text" class="form-control" name="marca" value="{{ old('marca', $good->marca) }}">
                         @error('marca')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Descripcion</label>
-                        <input type="text" class="form-control" name="descripcion" value="{{ old('descripcion') }}">
+                        <input type="text" class="form-control" name="descripcion" value="{{ old('descripcion', $good->descripcion) }}">
                         @error('descripcion')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Stock</label>
-                        <input type="number" class="form-control" name="stock" value="{{ old('stock') }}">
+                        <input type="number" class="form-control" name="stock" value="{{ old('stock', $good->stock) }}">
                         @error('stock')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror

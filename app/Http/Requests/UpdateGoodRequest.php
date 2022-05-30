@@ -29,7 +29,7 @@ class UpdateGoodRequest extends FormRequest
             'marca' => 'required',
             'descripcion' => 'required',
             'stock' => 'required',
-            'user_id' => 'required'
+            'users_id' => 'required'
         ];
     }
 
@@ -41,7 +41,6 @@ class UpdateGoodRequest extends FormRequest
             'marca.required' => 'La marca es requerida.',
             'descripcion.required' => 'La descripcion es requerida.',
             'stock.required' => 'El stock es requerido.',
-            'user_id.required' => 'El usuario es requerido.'
         ];
     }
 }

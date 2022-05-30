@@ -3,5 +3,4 @@
 @section('title', 'Home | Home')
 
 @section('content')
-
 @endsection

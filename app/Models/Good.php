@@ -15,7 +15,7 @@ class Good extends Model
         'marca',
         'descripcion',
         'stock',
-        'user_id'
+        'users_id'
     ];
 
     public function user()

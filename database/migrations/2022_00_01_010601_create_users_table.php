@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,9 +21,17 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('users')->insert([
+            'name' => 'JESUS',
+            'lastname' => 'FLORES',
+            'email' => 'jesus.flores@gmail.com',
+            'password' => '$2y$10$N1n3BhrLD31tviVNh7RTBOmQYtGumPBLDukUzLAadynn83BvLLyN.',
+            'is_admin' => 1
+        ]);
     }
 
     /**

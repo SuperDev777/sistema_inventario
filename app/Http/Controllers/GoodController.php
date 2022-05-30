@@ -16,7 +16,7 @@ class GoodController extends Controller
         return view('goods.index', compact('goods'));
     }
 
-    public function create(StoreGoodRequest $request)
+    public function create()
     {
         return view('goods.create');
     }
@@ -39,7 +39,7 @@ class GoodController extends Controller
         $good->marca = $request->marca;
         $good->descripcion = $request->descripcion;
         $good->stock = $request->stock;
-        $good->user_id = $request->user_id;
+        //$good->users_id = $request->users_id;
 
         $good->save();
 

@@ -16,6 +16,7 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Email</th>
+                        <th>Administrador</th>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
@@ -23,6 +24,11 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->lastname }}</td>
                             <td>{{ $user->email }}</td>
+                            @if($user->is_admin)
+                            <td>SI</td>
+                            @else
+                            <td>NO</td>
+                            @endif
                             <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Editar</a></td>
                         </tr>
                         @endforeach

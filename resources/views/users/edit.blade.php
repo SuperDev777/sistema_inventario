@@ -14,6 +14,7 @@
                 <form action="{{ route('users.update') }}" method="POST">
                     @csrf
                     {{ method_field('PUT') }}
+                    <input type="hidden" value="{{ $user->id }}" name="id">
                     <div class="form-group">
                         <label for="">Nombre</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}">
@@ -28,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text" class="form-control" name="password" value="{{ old('password', $user->password) }}">
+                        <input type="text" class="form-control" name="password" value="{{ old('password') }}">
                     </div>
                     <div class="form-group mt-2">
                         <button type="submit" class="btn btn-primary">Guardar</button>

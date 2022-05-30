@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('mac')->unique;
             $table->string('procesador');
             $table->string('ram');
+            $table->string('tipodisco');
             $table->string('capacidaddisco');
             $table->string('sistemaoperativo');
             $table->string('adquisicion');

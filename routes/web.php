@@ -1,67 +1,69 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Good;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoodController;
+use App\Http\Controllers\EquipmentController;
+use Illuminate\Support\Facades\Auth;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+    Rutas para logearse al sistema
 */
-//para crear ruta bienes
 
-Route::get('goods', function () {
-    return view('goods.index');
-})->name('goods.index');
+Route::get('/login', function () {
+    return view('auth.log-in');
+})->name('login');
 
-//para formulario crear productos
+Route::post('/login', function () {
+    $credentias = request()->only('email', 'password');
 
-Route::get('goods/create', function () {
-    return view('goods.create');
-})->name('goods.create');
+    if (Auth::attempt($credentias)) {
+        return redirect()->route('home');
+    }
 
-//para almacenar registros
+    return view('auth.log-in');
+})->name('login');
 
-Route::post('goods', function (Request $request) {
-})->name('goods.store');
-
-
-//para el login
 /*
-Route::get('/', function () {
-    return view('welcome');
+    Rutas atenticadas
+*/
+
+Route::middleware(['auth'])->group(function () {
+
+    // Ruta principal
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
+
+    /*
+        Rutas users
+    */
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        Route::get('/users/{id}', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('/users', [UserController::class, 'update'])->name('users.update');
+    });
+
+    /*
+        Rutas goods
+    */
+
+    Route::get('/goods', [GoodController::class, 'index'])->name('goods.index');
+    Route::get('/goods/create', [GoodController::class, 'create'])->name('goods.create');
+    Route::post('/goods', [GoodController::class, 'store'])->name('goods.store');
+    Route::get('/goods/{id}', [GoodController::class, 'edit'])->name('goods.edit');
+    Route::put('/goods', [GoodController::class, 'update'])->name('goods.update');
+
+    /*
+        Rutas equipments
+    */
+
+    Route::get('/equipments', [EquipmentController::class, 'index'])->name('equipments.index');
+    Route::get('/equipments/create', [EquipmentController::class, 'create'])->name('equipments.create');
+    Route::post('/equipments', [EquipmentController::class, 'store'])->name('equipments.store');
+    Route::delete('/equipments/{id}', [EquipmentController::class, 'destroy'])->name('equipments.destroy');
+    Route::get('/equipments/{id}', [EquipmentController::class, 'edit'])->name('equipments.edit');
+    Route::put('/equipments', [EquipmentController::class, 'update'])->name('equipments.update');
 });
-*/
-
-//para el login
-/*
-Route::post('/register', 'App\Http\Controllers\RegisterController@show');
-
-Route::post('/register', 'App\Http\Controllers\RegisterController@register');
-*/
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-/*
-Rutas users
-*/
-
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/{id}', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users', [UserController::class, 'update'])->name('users.update');
-
-/*
-Rutas users
-*/
-

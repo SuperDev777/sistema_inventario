@@ -1,27 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        Listado de productos
-                        <a href="{{route('goods.create')}}" class="btn btn-success btn-sm float-right">Agregar</a>
-                    </div>
-                    <div class="card-body">
-                        ...
-                    </div>
-                </div>
+@extends('layouts.app')
+
+@section('title', 'Articulos | Listar')
+
+@section('content')
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Listado de usuarios
+                <a href="{{ route('goods.create') }}" class="btn btn-success btn-sm float-end">Agregar</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Código</th>
+                        <th>Tipo</th>
+                        <th>Marca</th>
+                        <th>Descripción</th>
+                        <th>Stock</th>
+                    </thead>
+                    <tbody>
+                        @foreach($goods as $good)
+                        <tr>
+                            <td>{{ $good->codigo }}</td>
+                            <td>{{ $good->tipo }}</td>
+                            <td>{{ $good->marca }}</td>
+                            <td>{{ $good->descripcion }}</td>
+                            <td><a href="{{ route('goods.edit', $good->id) }}" class="btn btn-primary">Editar</a></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+@endsection
