@@ -6,21 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEquipmentRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
     public function rules()
     {
         return [
@@ -40,7 +31,7 @@ class StoreEquipmentRequest extends FormRequest
             'sistemaoperativo' => 'required',
             'adquisicion' => 'required',
             'stock' => 'required',
-            'observacion' => 'required',
+            'observacion' => 'max:255',
             'users_id' => 'required',
         ];
     }
@@ -64,7 +55,7 @@ class StoreEquipmentRequest extends FormRequest
             'sistemaoperativo.required' => 'El sistema operativo es requerido.',
             'adquisicion.required' => 'La adquisición es requerida',
             'stock.required' => 'El stock es requerido',
-            'observacion.required' => 'La observación es requerida.',
+            'observacion.max' => 'el maximo de caracteres son 255.',
             'users_id.required' => 'El suaurio es requerido.',
         ];
     }

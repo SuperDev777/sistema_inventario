@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\GoodsExport;
 use App\Http\Requests\StoreGoodRequest;
 use App\Http\Requests\UpdateGoodRequest;
 use App\Models\Good;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GoodController extends Controller
 {
@@ -45,4 +47,10 @@ class GoodController extends Controller
 
         return redirect()->route('goods.index');
     }
+
+    public function exporExcel(){
+        $goods = Good::get();
+        return Excel::download(new GoodsExport($goods), 'REPORTEB BIENES.xlsx');
+    }
+
 }

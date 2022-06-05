@@ -25,13 +25,15 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
         DB::table('users')->insert([
-            'name' => 'JESUS',
-            'lastname' => 'FLORES',
-            'email' => 'jesus.flores@gmail.com',
+            'name' => 'ADMIN',
+            'lastname' => 'ADMIN',
+            'email' => 'admin@gmail.com',
             'password' => '$2y$10$N1n3BhrLD31tviVNh7RTBOmQYtGumPBLDukUzLAadynn83BvLLyN.',
             'is_admin' => 1
         ]);
+        
     }
 
     /**

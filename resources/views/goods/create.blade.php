@@ -2,6 +2,14 @@
 
 @section('title', 'Articulos | Crear')
 
+@section('head')
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+@endsection
+
 @section('content')
 <div class="row mt-5">
     <div class="col-md-12">
@@ -22,12 +30,12 @@
                     </div>
                     <div class="form-group">
                         <label for="">Tipo:</label>
-                        <select name="tipo" id="tipo" class="form-select">
-                            <option selected disabled>Seleccione el tipo de articulo:</option>
-                            <option value="escritorio" @selected(old('tipo') == 'escritorio')>utiles de escritorio</option>
-                            <option value="limpieza" @selected(old('tipo') == 'limpieza')>limpieza</option>
-                            <option value="herramienta" @selected(old('tipo') == 'herramienta')>herramientas</option>
-                            <option value="red" @selected(old('tipo') == 'red')>red</option>
+                        <select name="tipo" id="select-tipo" class="form-control">
+                            <option selected disabled></option>
+                            <option value="ESCRITORIO" @selected(old('tipo') == 'ESCRITORIO')>UTILIES DE ESCRITORIO</option>
+                            <option value="LIMPIEZA" @selected(old('tipo') == 'LIMPIEZA')>LIMPIEZA</option>
+                            <option value="HERRAMIENTAS" @selected(old('tipo') == 'HERRAMIENTAS')>HERRAMIENTAS</option>
+                            <option value="RED" @selected(old('tipo') == 'RED')>RED</option>
                         </select>
                         @error('tipo')
                         <span class="text-danger">{{ $message }}</span>
@@ -61,4 +69,22 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+    const selectTipo = $('#select-tipo');
+
+    $(document).ready(function() {
+
+        selectTipo.select2({
+            width: 'element',
+            placeholder: 'SELECCIONE',
+            tags: true
+        });
+
+    });
+</script>
+
 @endsection

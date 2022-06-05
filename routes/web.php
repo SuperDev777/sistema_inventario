@@ -21,7 +21,7 @@ Route::post('/login', function () {
         return redirect()->route('home');
     }
 
-    return view('auth.log-in');
+    return back()->with('error', 'Usuario y/o contraseña incorrectas.');
 })->name('login');
 
 /*
@@ -56,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/goods/{id}', [GoodController::class, 'edit'])->name('goods.edit');
     Route::put('/goods', [GoodController::class, 'update'])->name('goods.update');
 
+    Route::get('/goods/export/excel', [GoodController::class, 'exporExcel'])->name('goods.exporExcel');
+
+
     /*
         Rutas equipments
     */
@@ -66,4 +69,20 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/equipments/{id}', [EquipmentController::class, 'destroy'])->name('equipments.destroy');
     Route::get('/equipments/{id}', [EquipmentController::class, 'edit'])->name('equipments.edit');
     Route::put('/equipments', [EquipmentController::class, 'update'])->name('equipments.update');
+
+    Route::get('/equipments/export/excel', [EquipmentController::class, 'exporExcel'])->name('equipments.exporExcel');
+
+
+    /*
+        Rutas orders
+    */
+
+    Route::get('/orders', [EquipmentController::class, 'index'])->name('orders.index');
+    Route::get('/orders/create', [EquipmentController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [EquipmentController::class, 'store'])->name('orders.store');
+    Route::delete('/orders/{id}', [EquipmentController::class, 'destroy'])->name('orders.destroy');
+    Route::get('/orders/{id}', [EquipmentController::class, 'edit'])->name('orders.edit');
+    Route::put('/orders', [EquipmentController::class, 'update'])->name('orders.update');
+
+    Route::get('/orders/export/excel', [EquipmentController::class, 'exporExcel'])->name('orders.exporExcel');
 });

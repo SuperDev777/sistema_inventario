@@ -24,7 +24,7 @@
                     <input type="hidden" value="{{ Auth::user()->id }}" name="users_id">
                     <div class="row g-2">
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Sede</label>
+                            <label for="" class="form-label">Sede <span class="text-danger">*</span></label>
                             <div>
                                 <select class="form-control" id="select-sede" name="sede">
                                     <option></option>
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Área</label>
+                            <label for="" class="form-label">Área <span class="text-danger">*</span></label>
                             <div>
                                 <select class="form-area" id="select-area" name="area">
                                     <option></option>
@@ -56,21 +56,21 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Piso</label>
-                            <input type="text" class="form-control" id="input-piso" placeholder="piso" name="piso">
+                            <label for="" class="form-label">Piso <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="input-piso" placeholder="piso" name="piso" value="{{ old('piso') }}">
                             @error('piso')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Código</label>
-                            <input type="text" class="form-control" id="input-codigo" placeholder="codigo" name="codigo">
+                            <label for="" class="form-label">Código <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="input-codigo" placeholder="codigo" name="codigo" value="{{ old('piso') }}">
                             @error('codigo')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Tipo</label>
+                            <label for="" class="form-label">Tipo <span class="text-danger">*</span></label>
                             <div>
                                 <select class="form-control" id="select-tipo" onchange="validarTipo();" name="tipo">
                                     <option></option>
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Marca</label>
+                            <label for="" class="form-label">Marca <span class="text-danger">*</span></label>
                             <div>
                                   <select class="form-control" id="select-marca" name="marca">
                                     <option></option>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Modelo</label>
+                            <label for="" class="form-label">Modelo <span class="text-danger">*</span></label>
                             <div>
                                   <select class="form-control" id="select-modelo" name="modelo">
                                     <option></option>
@@ -116,21 +116,21 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">N° Serie</label>
-                            <input type="text" class="form-control" id="input-serie" placeholder="n° serie" name="numserie">
+                            <label for="" class="form-label">N° Serie <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="input-serie" placeholder="n° serie" name="numserie" value="{{ old('piso') }}">
                             @error('numserie')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">MAC</label>
-                            <input type="text" class="form-control" id="input-mac" placeholder="MAC" name="mac">
+                            <label for="" class="form-label">MAC <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="input-mac" placeholder="MAC" name="mac" value="{{ old('piso') }}">
                             @error('mac')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Procesador</label>
+                            <label for="" class="form-label">Procesador <span class="text-danger">*</span></label>
                             <div>
                                   <select class="form-control" id="select-procesador" name="procesador">
                                     <option></option>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">RAM</label>
+                            <label for="" class="form-label">RAM <span class="text-danger">*</span></label>
                             <div>
                                   <select class="form-control" id="select-ram" name="ram">
                                     <option></option>
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Tipo Disco</label>
+                            <label for="" class="form-label">Tipo Disco <span class="text-danger">*</span></label>
                             <div>
                                   <select class="form-control" id="select-tipo-disco" name="tipodisco">
                                     <option></option>
@@ -182,7 +182,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Capacidad Disco</label>
+                            <label for="" class="form-label">Capacidad Disco <span class="text-danger">*</span></label>
                             <div>
                                   <select class="form-control" id="select-capacidad-disco" name="capacidaddisco">
                                     <option></option>
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Sistema Operativo</label>
+                            <label for="" class="form-label">Sistema Operativo <span class="text-danger">*</span></label>
                             <div>
                                 <select class="form-control" id="select-sistema-operativo" name="sistemaoperativo">
                                     <option></option>
@@ -242,22 +242,26 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Adquisición</label>
-                            <input type="text" class="form-control" id="input-adquisicion" placeholder="adquisicion" name="adquisicion">
+                            <label for="" class="form-label">Adquisición <span class="text-danger">*</span></label>
+                            <select name="adquisicion" class="form-control">
+                                <option disabled selected>SELECCIONE</option>
+                                <option value="PROPIO" @selected(old('adquisicion') == 'PROPIO')>PROPIO</option>
+                                <option value="ARRENDADO" @selected(old('adquisicion') == 'ARRENDADO')>ARRENDADO</option>
+                            </select>
                             @error('adquisicion')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Stock</label>
-                            <input type="numeric" class="form-control" id="input-stock" placeholder="stock" name="stock">
+                            <label for="" class="form-label">Stock <span class="text-danger">*</span></label>
+                            <input type="numeric" class="form-control" id="input-stock" placeholder="stock" name="stock" value="{{ old('piso') }}">
                             @error('stock')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-8">
                             <label for="" class="form-label">Observación</label>
-                            <input type="text" class="form-control" id="input-observacion" placeholder="observacion" name="observacion">
+                            <input type="text" class="form-control" id="input-observacion" placeholder="observacion" name="observacion" value="{{ old('piso') }}">
                             @error('observacion')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -299,56 +303,59 @@
 
         $('#select-sede').select2({
             width: 'element',
-            placeholder: 'sede',
+            placeholder: 'SELECCIONE',
             tags: true
         });
 
         $('#select-area').select2({
             width: 'element',
-            placeholder: 'área',
+            placeholder: 'SELECCIONE',
             tags: true
         });
 
         $('#select-tipo').select2({
             width: 'element',
-            placeholder: 'tipo'
+            placeholder: 'SELECCIONE'
         });
 
         $('#select-marca').select2({
             width: 'element',
-            placeholder: 'marca',
+            placeholder: 'SELECCIONE',
             tags: true
         });
 
         $('#select-modelo').select2({
             width: 'element',
-            placeholder: 'modelo',
+            placeholder: 'SELECCIONE',
             tags: true
         });
 
         $('#select-ram').select2({
             width: 'element',
-            placeholder: 'ram'
+            placeholder: 'SELECCIONE'
         });
 
         $('#select-tipo-disco').select2({
             width: 'element',
-            placeholder: 'tipo de disco'
+            placeholder: 'SELECCIONE'
         });
 
         $('#select-capacidad-disco').select2({
             width: 'element',
-            placeholder: 'capacidad de disco'
+            placeholder: 'SELECCIONE',
+            tags: true
         });
 
         $('#select-procesador').select2({
             width: 'element',
-            placeholder: 'procesador'
+            placeholder: 'SELECCIONE',
+            tags: true
         });
 
         $('#select-sistema-operativo').select2({
             width: 'element',
-            placeholder: 'sistema operativo'
+            placeholder: 'SELECCIONE',
+            tags: true
         });
 
     });

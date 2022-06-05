@@ -160,6 +160,7 @@ return [
          * Laravel Framework Service Providers...
          */
         Illuminate\Auth\AuthServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
@@ -210,6 +211,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

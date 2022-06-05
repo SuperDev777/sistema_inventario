@@ -32,8 +32,19 @@ class Equipment extends Model
         'users_id',
     ];
     
+    public function campus()
+    {
+        return $this->belongsTo(Campus::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }

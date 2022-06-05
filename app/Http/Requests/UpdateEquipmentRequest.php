@@ -40,7 +40,7 @@ class UpdateEquipmentRequest extends FormRequest
             'sistemaoperativo' => 'required',
             'adquisicion' => 'required',
             'stock' => 'required',
-            'observacion' => 'required',
+            'observacion' => 'max:255',
             'users_id' => 'required',
         ];
     }

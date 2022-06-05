@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\EquipmentsExport;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
 use App\Models\Equipment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EquipmentController extends Controller
 {
@@ -56,5 +58,10 @@ class EquipmentController extends Controller
     public function destroy($id){
         Equipment::destroy($id);
         return redirect()->route('equipments.index');
+    }
+
+    public function exporExcel(){
+        $equipments = Equipment::get();
+        return Excel::download(new EquipmentsExport($equipments), 'REPORTEB EQUIPOS.xlsx');
     }
 }

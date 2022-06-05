@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,14 @@
 </head>
 <body>
     <main>
+
+        @if($message = Session::get('error'))
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>{{ $message }}</div>
+            </div>
+        @endif
+
         <div class="container">
             <div class="row mt-5 justify-content-center">
                 <div class="col-12 col-md-6">

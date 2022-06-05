@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('goods', function (Blueprint $table) {
             $table->id();
-            //conecta con la tabla usuario
             $table->string('codigo',20)->unique;
             $table->string('tipo');
             $table->string('marca',70);
