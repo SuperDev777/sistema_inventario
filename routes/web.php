@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -77,12 +78,12 @@ Route::middleware(['auth'])->group(function () {
         Rutas orders
     */
 
-    Route::get('/orders', [EquipmentController::class, 'index'])->name('orders.index');
-    Route::get('/orders/create', [EquipmentController::class, 'create'])->name('orders.create');
-    Route::post('/orders', [EquipmentController::class, 'store'])->name('orders.store');
-    Route::delete('/orders/{id}', [EquipmentController::class, 'destroy'])->name('orders.destroy');
-    Route::get('/orders/{id}', [EquipmentController::class, 'edit'])->name('orders.edit');
-    Route::put('/orders', [EquipmentController::class, 'update'])->name('orders.update');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+    Route::get('/orders/{id}', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::put('/orders', [OrderController::class, 'update'])->name('orders.update');
 
-    Route::get('/orders/export/excel', [EquipmentController::class, 'exporExcel'])->name('orders.exporExcel');
+    Route::get('/orders/export/excel', [OrderController::class, 'exporExcel'])->name('orders.exporExcel');
 });

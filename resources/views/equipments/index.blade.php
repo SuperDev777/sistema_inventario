@@ -43,8 +43,8 @@
                         <tbody>
                             @foreach($equipments as $equipment)
                             <tr>
-                                <td>{{ $equipment->sede()->nombre }}</td>
-                                <td>{{ $equipment->area()->nombre }}</td>
+                                <td>{{ $equipment->sede }}</td>
+                                <td>{{ $equipment->area }}</td>
                                 <td>{{ $equipment->piso }}</td>
                                 <td>{{ $equipment->codigo }}</td>
                                 <td>{{ $equipment->tipo }}</td>

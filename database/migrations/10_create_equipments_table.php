@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('equipments', function (Blueprint $table) {
             $table->id();
-            $table->string('campus_id');
-            $table->unsignedBigInteger('areas_id');
+            $table->string('sede');
+            $table->string('area',60);
             $table->string('piso');
             $table->string('codigo',20)->unique;
             $table->string('tipo');
@@ -33,8 +33,6 @@ return new class extends Migration
             $table->integer('stock');
             $table->text('observacion')->nullable();
             $table->unsignedBigInteger('users_id');
-            $table->foreign('campus_id')->references('id')->on('campus');
-            $table->foreign('areas_id')->references('id')->on('areas');
             $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
         });
