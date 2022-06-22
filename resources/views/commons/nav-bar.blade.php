@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('orders.index') }}">Ordenes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('receives.index') }}">Recepciones</a>
+                </li>
             </ul>
             <div class="d-flex justify-content-start justify-content-lg-end w-100">
                 <span class="text-white">{{ Auth::user()->name }}</span>

@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\DetailOrderController;
+use App\Http\Controllers\DetailReceivedController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RecivedController;
+use App\Models\DetailOrder;
+use App\Models\DetailReceived;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -32,9 +38,7 @@ Route::post('/login', function () {
 Route::middleware(['auth'])->group(function () {
 
     // Ruta principal
-    Route::get('/', function () {
-        return view('home');
-    })->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     /*
         Rutas users
@@ -82,8 +86,41 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+    Route::get('/order/{id}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/orders/{id}', [OrderController::class, 'edit'])->name('orders.edit');
     Route::put('/orders', [OrderController::class, 'update'])->name('orders.update');
 
     Route::get('/orders/export/excel', [OrderController::class, 'exporExcel'])->name('orders.exporExcel');
+    
+    /*
+        Rutas detail orders
+    */
+
+    Route::get('/detail-orders/{id}/create', [DetailOrderController::class, 'create'])->name('detailOrders.create');
+    Route::post('/detail-orders', [DetailOrderController::class, 'store'])->name('detailOrders.store');
+    Route::delete('/detail-orders/{id}', [DetailOrderController::class, 'destroy'])->name('detailOrders.destroy');
+
+
+    /*
+        Rutas receives
+    */
+
+    Route::get('/receives', [RecivedController::class, 'index'])->name('receives.index');
+    Route::get('/receives/create', [RecivedController::class, 'create'])->name('receives.create');
+    Route::post('/receives', [RecivedController::class, 'store'])->name('receives.store');
+    Route::delete('/receives/{id}', [RecivedController::class, 'destroy'])->name('receives.destroy');
+    Route::get('/received/{id}', [RecivedController::class, 'show'])->name('receives.show');
+    Route::get('/receives/{id}', [RecivedController::class, 'edit'])->name('receives.edit');
+    Route::put('/receives', [RecivedController::class, 'update'])->name('receives.update');
+
+    Route::get('/receives/export/excel', [OrderController::class, 'exporExcel'])->name('receives.exporExcel');
+
+    /*
+        Rutas detail receives
+    */
+
+    Route::get('/detail-receives/{id}/create', [DetailReceivedController::class, 'create'])->name('detailReceives.create');
+    Route::post('/detail-receives', [DetailReceivedController::class, 'store'])->name('detailReceives.store');
+    Route::delete('/detail-receives/{id}', [DetailReceivedController::class, 'destroy'])->name('detailReceives.destroy');
+    
 });

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('unidadmedida');
             $table->string('descripcion',100);
             $table->timestamps();
-            $table->unsignedBigInteger('orders_id');
-            $table->foreign('orders_id')->references('id')->on('orders');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

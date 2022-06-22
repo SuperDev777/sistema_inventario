@@ -9,7 +9,15 @@ class Area extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre'
+    ];
+
     public function equipments(){
         return $this->hasMany(Equipment::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }

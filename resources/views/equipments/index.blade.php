@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-header">
                 Listado de equipos
-                <a href="{{ route('equipments.create') }}" class="btn btn-success btn-sm float-end">Agregar</a>
+                <a href="{{ route('equipments.create') }}" class="btn btn-success btn-sm float-end">Nuevo</a>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
@@ -35,7 +35,6 @@
                             <th>Modelo</th>
                             <th>N° Serie</th>
                             <th>Adquisición</th>
-                            <th>Stock</th>
                             <th>Observación</th>
                             <th></th>
                             <th></th>
@@ -43,8 +42,8 @@
                         <tbody>
                             @foreach($equipments as $equipment)
                             <tr>
-                                <td>{{ $equipment->sede }}</td>
-                                <td>{{ $equipment->area }}</td>
+                                <td>{{ $equipment->campus->nombre }}</td>
+                                <td>{{ $equipment->area->nombre }}</td>
                                 <td>{{ $equipment->piso }}</td>
                                 <td>{{ $equipment->codigo }}</td>
                                 <td>{{ $equipment->tipo }}</td>
@@ -52,7 +51,6 @@
                                 <td>{{ $equipment->modelo }}</td>
                                 <td>{{ $equipment->numserie }}</td>
                                 <td>{{ $equipment->adquisicion }}</td>
-                                <td>{{ $equipment->stock }}</td>
                                 <td>{{ $equipment->observacion }}</td>
                                 <td><a href="{{ route('equipments.edit', $equipment->id) }}" class="btn btn-primary">Editar</a></td>
                                 <td>

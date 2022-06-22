@@ -14,13 +14,13 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Listado de ordenes
-                <a href="{{ route('orders.create') }}" class="btn btn-success btn-sm float-end">Nuevo</a>
+                Listado de recepciones
+                <a href="{{ route('receives.create') }}" class="btn btn-success btn-sm float-end">Nuevo</a>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <a href="{{ route('orders.exporExcel') }}" class="btn btn-success">EXCEL</a>
+                        <a href="{{ route('receives.exporExcel') }}" class="btn btn-success">EXCEL</a>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -34,15 +34,15 @@
                             <th></th>
                         </thead>
                         <tbody>
-                            @foreach($orders as $order)
+                            @foreach($receives as $received)
                             <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->area->nombre }}</td>
-                                <td>{{ $order->jefeinmediato }}</td>
-                                <td>{{ $order->user->name }} {{ $order->user->lastname }}</td>
-                                <td><a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary">Ver</a></td>
+                                <td>{{ $received->id }}</td>
+                                <td>{{ $received->area->nombre }}</td>
+                                <td>{{ $received->jefeinmediato }}</td>
+                                <td>{{ $received->user->name }} {{ $received->user->lastname }}</td>
+                                <td><a href="{{ route('receives.show', $received->id) }}" class="btn btn-primary">Ver</a></td>
                                 <td>
-                                    <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
+                                    <form action="{{ route('receives.destroy', $received->id) }}" method="POST">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger">Eliminar</button>

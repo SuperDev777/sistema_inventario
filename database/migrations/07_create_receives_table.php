@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('receives', function (Blueprint $table) {
             $table->id();
-            $table->string('area');
+            $table->unsignedBigInteger('area_id');
+            $table->String('jefeinmediato');
             $table->timestamps();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('area_id')->references('id')->on('areas');
         });
     }
 

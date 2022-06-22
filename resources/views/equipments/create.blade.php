@@ -21,20 +21,18 @@
             <div class="card-body">
                 <form action="{{ route('equipments.store') }}" method="POST">
                     @csrf
-                    <input type="hidden" value="{{ Auth::user()->id }}" name="users_id">
+                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                     <div class="row g-2">
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="" class="form-label">Sede <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-control" id="select-sede" name="sede">
+                                <select class="form-control" id="select-sede" name="campus_id">
                                     <option></option>
-                                    <option value="AREQUIPA">AREQUIPA</option>
-                                    <option value="LIMA">LIMA</option>
-                                    <option value="TRUJILLO">TRUJILLO</option>
-                                    <option value="HUANCHACO">HUANCHACO</option>
-                                    <option value="LARCO">LARCO</option>
+                                    @foreach ($campuses as $campus)
+                                    <option @selected(old('campus_id') == $campus->id) value="{{ $campus->id }}">{{ $campus->nombre }}</option>
+                                    @endforeach
                                 </select>
-                                @error('sede')
+                                @error('campus_id')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -42,15 +40,13 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="" class="form-label">Área <span class="text-danger">*</span></label>
                             <div>
-                                <select class="form-area" id="select-area" name="area">
+                                <select class="form-area" id="select-area" name="area_id">
                                     <option></option>
-                                    <option value="SISTEMAS">SISTEMAS</option>
-                                    <option value="ADMINISTRACION">ADMINISTRACION</option>
-                                    <option value="RRHH">RRHH</option>
-                                    <option value="GERENCIA">GERENCIA</option>
-                                    <option value="LOGISTICA">LOGISTICA</option>
+                                    @foreach ($areas as $area)
+                                    <option @selected(old('area_id') == $area->id) value="{{ $area->id }}">{{ $area->nombre }}</option>
+                                    @endforeach
                                 </select>
-                                @error('area')
+                                @error('area_id')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -105,10 +101,6 @@
                             <div>
                                   <select class="form-control" id="select-modelo" name="modelo">
                                     <option></option>
-                                    <option value="1">DELL</option>
-                                    <option value="2">HP</option>
-                                    <option value="3">LENOVO</option>
-                                    <option value="3">ASUS</option>
                                   </select>
                                   @error('modelo')
                                   <span class="text-danger">{{ $message }}</span>
@@ -135,12 +127,14 @@
                                   <select class="form-control" id="select-procesador" name="procesador">
                                     <option></option>
                                     <option value="NINGUNO">NINGUNO</option>
-                                    <option value="1">128 GB</option>
-                                    <option value="2">250 GB</option>
-                                    <option value="2">500 GB</option>
-                                    <option value="2">512 GB</option>
-                                    <option value="2">1 TB</option>
-                                    <option value="2">2 TB</option>
+                                    <option value="Core i3">Core i3</option>
+                                    <option value="Core i5">Core i5</option>
+                                    <option value="Core i7">Core i7</option>
+                                    <option value="Core i9">Core i9</option>
+                                    <option value="Ryzen 3">Ryzen 3</option>
+                                    <option value="Ryzen 5">Ryzen 5</option>
+                                    <option value="Ryzen 7">Ryzen 7</option>
+                                    <option value="Ryzen 9">Ryzen 9</option>
                                 </select>
                                 @error('procesador')
                                 <span class="text-danger">{{ $message }}</span>
@@ -252,14 +246,7 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Stock <span class="text-danger">*</span></label>
-                            <input type="numeric" class="form-control" id="input-stock" placeholder="stock" name="stock" value="{{ old('piso') }}">
-                            @error('stock')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-8">
+                        <div class="col-12">
                             <label for="" class="form-label">Observación</label>
                             <input type="text" class="form-control" id="input-observacion" placeholder="observacion" name="observacion" value="{{ old('piso') }}">
                             @error('observacion')

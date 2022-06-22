@@ -9,6 +9,14 @@ class DetailReceived extends Model
 {
     use HasFactory;
 
+    protected $table = 'detailreceives';
+
+    protected $fillable = [
+        'cantidad',
+        'unidadmedida',
+        'descripcion',
+        'received_id'
+    ];
 
     public function received()
     {

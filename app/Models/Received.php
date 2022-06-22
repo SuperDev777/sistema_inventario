@@ -9,13 +9,26 @@ class Received extends Model
 {
     use HasFactory;
 
-    public function user(){
+    protected $table = 'receives';
+
+    protected $fillable = [
+        'area_id',
+        'user_id',
+        'jefeinmediato',
+    ];
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function detailReceives()
+    public function detailReceived()
     {
         return $this->hasMany(DetailReceived::class);
     }
-
 }

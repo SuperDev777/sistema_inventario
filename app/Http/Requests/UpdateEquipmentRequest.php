@@ -39,7 +39,6 @@ class UpdateEquipmentRequest extends FormRequest
             'capacidaddisco' => 'required',
             'sistemaoperativo' => 'required',
             'adquisicion' => 'required',
-            'stock' => 'required',
             'observacion' => 'max:255',
             'users_id' => 'required',
         ];

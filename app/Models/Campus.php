@@ -11,6 +11,10 @@ class Campus extends Model
 
     protected $table = 'campus';
 
+    protected $fillable = [
+        'nombre'
+    ];
+
     public function equipments(){
         return $this->hasMany(Equipment::class);
     }

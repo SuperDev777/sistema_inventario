@@ -9,6 +9,14 @@ class DetailOrder extends Model
 {
     use HasFactory;
 
+    protected $table = 'detailorders';
+
+    protected $fillable = [
+        'cantidad',
+        'unidadmedida',
+        'descripcion',
+        'order_id'
+    ];
 
     public function order()
     {

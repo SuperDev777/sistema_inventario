@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('detailreceives', function (Blueprint $table) {
             $table->id();
             $table->integer('cantidad');
+            $table->string('unidadmedida');
             $table->string('descripcion',100);
             $table->timestamps();
-            $table->unsignedBigInteger('receives_id');
-            $table->foreign('receives_id')->references('id')->on('receives');
+            $table->unsignedBigInteger('received_id');
+            $table->foreign('received_id')->references('id')->on('receives');
         });
     }
 

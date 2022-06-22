@@ -12,8 +12,8 @@ class Equipment extends Model
     protected $table = 'equipments';
 
     protected $fillable = [
-        'sede',
-        'area',
+        'campus_id',
+        'area_id',
         'piso',
         'codigo',
         'tipo',
@@ -27,11 +27,20 @@ class Equipment extends Model
         'capacidaddisco',
         'sistemaoperativo',
         'adquisicion',
-        'stock',
         'observacion',
-        'users_id',
+        'user_id',
     ];
     
+    public function campus()
+    {
+        return $this->belongsTo(Campus::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

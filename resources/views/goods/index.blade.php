@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-header">
                 Listado de articulos
-                <a href="{{ route('goods.create') }}" class="btn btn-success btn-sm float-end">Agregar</a>
+                <a href="{{ route('goods.create') }}" class="btn btn-success btn-sm float-end">Nuevo</a>
             </div>
             <div class="card-body">
                 <div class="row mb-3">

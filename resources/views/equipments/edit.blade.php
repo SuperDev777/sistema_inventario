@@ -28,16 +28,13 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="" class="form-label">Sede</label>
                             <div>
-                                <select class="form-control" id="select-sede" name="sede">
+                                <select class="form-control" id="select-sede" name="campus_id">
                                     <option></option>
-                                    <option selected value="{{ $equipment->sede }}">{{ $equipment->sede }}</option>
-                                    <option value="AREQUIPA">AREQUIPA</option>
-                                    <option value="LIMA">LIMA</option>
-                                    <option value="TRUJILLO">TRUJILLO</option>
-                                    <option value="HUANCHACO">HUANCHACO</option>
-                                    <option value="LARCO">LARCO</option>
+                                    @foreach ($campuses as $campus)
+                                    <option @selected(old('campus_id', $equipment->campus_id) == $campus->id) value="{{ $campus->id }}">{{ $campus->nombre }}</option>
+                                    @endforeach
                                 </select>
-                                @error('sede')
+                                @error('campus_id')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -45,14 +42,11 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="" class="form-label">Área</label>
                             <div>
-                                <select class="form-area" id="select-area" name="area">
+                                <select class="form-area" id="select-area" name="area_id">
                                     <option></option>
-                                    <option selected value="{{ $equipment->area }}">{{ $equipment->area }}</option>
-                                    <option value="SISTEMAS">SISTEMAS</option>
-                                    <option value="ADMINISTRACION">ADMINISTRACION</option>
-                                    <option value="RRHH">RRHH</option>
-                                    <option value="GERENCIA">GERENCIA</option>
-                                    <option value="LOGISTICA">LOGISTICA</option>
+                                    @foreach ($areas as $area)
+                                    <option @selected(old('area_id', $equipment->area_id) == $area->id) value="{{ $area->id }}">{{ $area->nombre }}</option>
+                                    @endforeach
                                 </select>
                                 @error('area')
                                 <span class="text-danger">{{ $message }}</span>
@@ -111,10 +105,6 @@
                                   <select class="form-control" id="select-modelo" name="modelo">
                                     <option></option>
                                     <option selected value="{{ $equipment->modelo }}">{{ $equipment->modelo }}</option>
-                                    <option value="1">DELL</option>
-                                    <option value="2">HP</option>
-                                    <option value="3">LENOVO</option>
-                                    <option value="3">ASUS</option>
                                   </select>
                                   @error('modelo')
                                   <span class="text-danger">{{ $message }}</span>
@@ -258,14 +248,7 @@
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Stock</label>
-                            <input type="numeric" class="form-control" id="input-stock" placeholder="stock" name="stock" value="{{ old('stock', $equipment->stock) }}">
-                            @error('stock')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-8">
+                        <div class="col-12">
                             <label for="" class="form-label">Observación</label>
                             <input type="text" class="form-control" id="input-observacion" placeholder="observacion" name="observacion" value="{{ old('observacion', $equipment->observacion) }}">
                             @error('observacion')

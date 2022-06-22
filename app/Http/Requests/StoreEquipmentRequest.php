@@ -15,8 +15,8 @@ class StoreEquipmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'sede' => 'required',
-            'area' => 'required',
+            'campus_id' => 'required',
+            'area_id' => 'required',
             'piso' => 'required',
             'codigo' => 'required',
             'tipo' => 'required',
@@ -30,17 +30,16 @@ class StoreEquipmentRequest extends FormRequest
             'capacidaddisco' => 'required',
             'sistemaoperativo' => 'required',
             'adquisicion' => 'required',
-            'stock' => 'required',
             'observacion' => 'max:255',
-            'users_id' => 'required',
+            'user_id' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'sede.required' => 'La sede es requerida.',
-            'area.required' => 'El área es requerida.',
+            'campus_id.required' => 'La sede es requerida.',
+            'area_id.required' => 'El área es requerida.',
             'piso.required' => 'El piso es requerido.',
             'codigo.required' => 'El código es requerido.',
             'tipo.required' => 'El tipo es requerido.',
@@ -56,7 +55,7 @@ class StoreEquipmentRequest extends FormRequest
             'adquisicion.required' => 'La adquisición es requerida',
             'stock.required' => 'El stock es requerido',
             'observacion.max' => 'el maximo de caracteres son 255.',
-            'users_id.required' => 'El suaurio es requerido.',
+            'user_id.required' => 'El suaurio es requerido.',
         ];
     }
 }
