@@ -3,8 +3,8 @@
 @section('title', 'Usuarios | Crear')
 
 @section('content')
-<div class="row mt-5">
-    <div class="col-md-12">
+<div class="row">
+    <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header">
                 Crear usuario
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" autocomplete="off">
                         @error('password')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror

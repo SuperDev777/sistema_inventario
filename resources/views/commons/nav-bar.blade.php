@@ -1,36 +1,60 @@
+<header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <!--<div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>-->
+    <div>
+        <a href="{{ route('users.show', Auth::user()->id) }}">
+            {{ Auth::user()->name }}
+        </a>
+    </div>
+</header>
+
 <!-- Navbar -->
-<nav class="navbar navbar-dark navbar-expand-lg bg-primary">
-    <!-- Navbar content -->
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">Home</a>
-                </li>
+<div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div>
+            <a href="#" class="nav_logo">
+                <i class='bx bx-layer nav_logo-icon'></i>
+                <span class="nav_logo-name">ALMACÉN</span>
+            </a>
+            <div class="nav_list">
+                <a href="{{ route('home') }}" class="nav_link active">
+                    <i class='bx bx-grid-alt nav_icon'></i>
+                    <span class="nav_name">Dashboard</span>
+                </a>
+                <a href="{{ route('campus.index') }}" class="nav_link">
+                    <i class='bx bx-buildings nav_icon'></i>
+                    <span class="nav_name">Sedes</span>
+                </a>
                 @if(Auth::user()->is_admin)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-                </li>
+                <a href="{{ route('users.index') }}" class="nav_link">
+                    <i class='bx bx-user nav_icon'></i>
+                    <span class="nav_name">Usuarios</span>
+                </a>
                 @endif
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('goods.index') }}">Articulos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('equipments.index') }}">Equipos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('orders.index') }}">Ordenes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('receives.index') }}">Recepciones</a>
-                </li>
-            </ul>
-            <div class="d-flex justify-content-start justify-content-lg-end w-100">
-                <span class="text-white">{{ Auth::user()->name }}</span>
+                <a href="{{ route('goods.index') }}" class="nav_link">
+                    <i class='bx bx-message-square-detail nav_icon'></i>
+                    <span class="nav_name">Articulos</span>
+                </a>
+                <a href="{{ route('equipments.index') }}" class="nav_link">
+                    <i class='bx bx-bookmark nav_icon'></i>
+                    <span class="nav_name">Equipos</span>
+                </a>
+                <a href="{{ route('orders.index') }}" class="nav_link">
+                    <i class='bx bx-folder nav_icon'></i>
+                    <span class="nav_name">Ordenes</span>
+                </a>
+                <a href="{{ route('receives.index') }}" class="nav_link">
+                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                    <span class="nav_name">Recepciones</span>
+                </a>
             </div>
         </div>
-    </div>
-</nav>
+        <a href="#" class="nav_link" onclick="document.querySelector('form').submit();">
+            <i class='bx bx-log-out nav_icon'></i>
+            <span class="nav_name">SignOut</span>
+        </a>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+        </form>
+    </nav>
+</div>

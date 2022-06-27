@@ -21,65 +21,24 @@ class EquipmentController extends Controller
 
     public function create(){
         $campuses = Campus::get();
-        $areas = Area::get();
-        return view('equipments.create', compact('campuses', 'areas'));
+        return view('equipments.create', compact('campuses'));
     }
 
-    public function store(Request $request){
-        $campus = Campus::find($request->campus_id);
-
-        if(!$campus){
-            $campus = Campus::create(['nombre' => $request->campus_id]);
-        }
-
-        $area = Area::find($request->area_id);
-
-        if(!$area){
-            $area = Area::create(['nombre' => $request->area_id]);
-        }
-        
-        $equipment = new Equipment();
-
-        $equipment->campus_id = $campus->id;
-        $equipment->area_id = $area->id;
-        $equipment->piso = $request->piso;
-        $equipment->codigo = $request->codigo;
-        $equipment->tipo = $request->tipo;
-        $equipment->marca = $request->marca;
-        $equipment->modelo = $request->modelo;
-        $equipment->numserie = $request->numserie;
-        $equipment->mac = $request->mac;
-        $equipment->procesador = $request->procesador;
-        $equipment->ram = $request->ram;
-        $equipment->tipodisco = $request->tipodisco;
-        $equipment->capacidaddisco = $request->capacidaddisco;
-        $equipment->sistemaoperativo = $request->sistemaoperativo;
-        $equipment->adquisicion = $request->adquisicion;
-        $equipment->observacion = $request->observacion;
-        $equipment->user_id = $request->user_id;
-
-        $equipment->save();
-
-        /*
-        $equipment = Equipment::create($resquest->validated());
-        */
-        
+    public function store(StoreEquipmentRequest $request){
+        $equipment = Equipment::create($request->validated());
         return redirect()->route('equipments.index');
-
     }
     
     public function edit($id){
         $equipment = Equipment::find($id);
         $campuses = Campus::get();
-        $areas = Area::get();
-        return view('equipments.edit', compact('equipment', 'campuses', 'areas'));
+        return view('equipments.edit', compact('equipment', 'campuses'));
     }
-
+    
     public function update(UpdateEquipmentRequest $request){
+        $request->validate();
         $equipment = Equipment::find($request->id);
         $equipment->sede = $request->sede;
-        $equipment->area = $request->area;
-        $equipment->piso = $request->piso;
         $equipment->codigo = $request->codigo;
         $equipment->tipo = $request->tipo;
         $equipment->marca = $request->marca;
@@ -90,7 +49,6 @@ class EquipmentController extends Controller
         $equipment->ram = $request->ram;
         $equipment->capacidaddisco = $request->capacidaddisco;
         $equipment->sistemaoperativo = $request->sistemaoperativo;
-        $equipment->adquisicion = $request->adquisicion;
         $equipment->observacion = $request->observacion;
         $equipment->users_id = $request->users_id;
         $equipment->save();

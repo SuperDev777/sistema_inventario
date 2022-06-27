@@ -12,8 +12,8 @@
 
 @section('content')
 
-<div class="row mt-5">
-    <div class="col-md-12">
+<div class="row">
+    <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header">
                 Editar equipos
@@ -38,27 +38,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Área</label>
-                            <div>
-                                <select class="form-area" id="select-area" name="area_id">
-                                    <option></option>
-                                    @foreach ($areas as $area)
-                                    <option @selected(old('area_id', $equipment->area_id) == $area->id) value="{{ $area->id }}">{{ $area->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                @error('area')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Piso</label>
-                            <input type="text" class="form-control" id="input-piso" placeholder="piso" name="piso" value="{{ old('piso', $equipment->piso) }}">
-                            @error('piso')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="" class="form-label">Código</label>

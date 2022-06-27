@@ -26,8 +26,6 @@ class UpdateEquipmentRequest extends FormRequest
         return [
             'id' => 'required',
             'sede' => 'required',
-            'area' => 'required',
-            'piso' => 'required',
             'codigo' => 'required',
             'tipo' => 'required',
             'marca' => 'required',
@@ -38,7 +36,6 @@ class UpdateEquipmentRequest extends FormRequest
             'ram' => 'required',
             'capacidaddisco' => 'required',
             'sistemaoperativo' => 'required',
-            'adquisicion' => 'required',
             'observacion' => 'max:255',
             'users_id' => 'required',
         ];

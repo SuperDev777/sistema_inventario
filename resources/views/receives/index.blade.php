@@ -10,8 +10,8 @@
 
 @section('content')
 
-<div class="row mt-3">
-    <div class="col-md-12">
+<div class="row">
+    <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header">
                 Listado de recepciones

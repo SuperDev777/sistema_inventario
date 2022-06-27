@@ -3,8 +3,8 @@
 @section('title', 'Recepciones | Crear')
 
 @section('content')
-<div class="row mt-5">
-    <div class="col-md-12 mb-3">
+<div class="row">
+    <div class="col-md-12 mt-3 mb-3">
         <div class="card">
             <div class="card-header">
                 Recepción N° {{ $received->id }}

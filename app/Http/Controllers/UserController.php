@@ -45,4 +45,9 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('users.index');
     }
+
+    public function show($id){
+        $user = User::find($id);
+        return view('users.profile', compact('user'));
+    }
 }

@@ -1,0 +1,37 @@
+.form-group{
+    margin-bottom: 1rem;
+}
+
+.form-control{
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+/* Perzonalización de select 2 */
+
+.select2-container{
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+
+.select2-container .selection .select2-selection{
+    height: 38px;
+    padding: 0px 12px;
+    display: flex;
+    align-items: center;
+}
+.select2-container .selection .select2-selection .select2-selection__rendered{
+    padding: 0px;
+}
+.select2-container .selection .select2-selection .select2-selection__arrow{
+    height: 100%;
+}
+
+.container{
+    width: 95%;
+    max-width: 100%;
+    min-width: 95%;
+    margin: auto;
+}

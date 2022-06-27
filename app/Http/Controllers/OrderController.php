@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OrdersExport;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Area;
 use App\Models\DetailOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -56,6 +58,9 @@ class OrderController extends Controller
         return redirect()->route('orders.index');
     }
 
-    public function exportExcel(){}
+    public function exporExcel(){
+        $orders = Order::get();
+        return Excel::download(new OrdersExport($orders), 'REPORTE ORDENES.xlsx');
+    }
 
 }

@@ -12,7 +12,11 @@ class Campus extends Model
     protected $table = 'campus';
 
     protected $fillable = [
-        'nombre'
+        'nombre',
+        'departamento',
+        'provincia',
+        'distrito',
+        'direccion',
     ];
 
     public function equipments(){

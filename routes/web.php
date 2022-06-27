@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CampusController;
 use App\Http\Controllers\DetailOrderController;
 use App\Http\Controllers\DetailReceivedController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RecivedController;
 use App\Models\DetailOrder;
 use App\Models\DetailReceived;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -21,15 +23,26 @@ Route::get('/login', function () {
     return view('auth.log-in');
 })->name('login');
 
-Route::post('/login', function () {
+Route::post('/login', function (Request $request) {
     $credentias = request()->only('email', 'password');
 
     if (Auth::attempt($credentias)) {
+        $request->session()->regenerate();
         return redirect()->route('home');
     }
 
     return back()->with('error', 'Usuario y/o contraseña incorrectas.');
 })->name('login');
+
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login');
+})->name('logout');
 
 /*
     Rutas atenticadas
@@ -43,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
     /*
         Rutas users
     */
+
+
     Route::middleware(['admin'])->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
@@ -50,6 +65,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users/{id}', [UserController::class, 'edit'])->name('users.edit');
         Route::put('/users', [UserController::class, 'update'])->name('users.update');
     });
+    
+    Route::get('/user/{id}', [UserController::class, 'show'])->name('users.show');
+
+    /*
+        Rutas campus
+    */
+    Route::get('/campus', [CampusController::class, 'index'])->name('campus.index');
+    Route::get('/campus/create', [CampusController::class, 'create'])->name('campus.create');
+    Route::post('/campus', [CampusController::class, 'store'])->name('campus.store');
+    Route::delete('/campus/{id}', [CampusController::class, 'destroy'])->name('campus.destroy');
+    Route::get('/campus/{id}', [CampusController::class, 'edit'])->name('campus.edit');
+    Route::put('/campus', [CampusController::class, 'update'])->name('campus.update');
+    Route::get('/campus/export/excel', [CampusController::class, 'exporExcel'])->name('campus.exporExcel');
 
     /*
         Rutas goods
@@ -91,7 +119,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/orders', [OrderController::class, 'update'])->name('orders.update');
 
     Route::get('/orders/export/excel', [OrderController::class, 'exporExcel'])->name('orders.exporExcel');
-    
+
     /*
         Rutas detail orders
     */
@@ -122,5 +150,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/detail-receives/{id}/create', [DetailReceivedController::class, 'create'])->name('detailReceives.create');
     Route::post('/detail-receives', [DetailReceivedController::class, 'store'])->name('detailReceives.store');
     Route::delete('/detail-receives/{id}', [DetailReceivedController::class, 'destroy'])->name('detailReceives.destroy');
-    
 });

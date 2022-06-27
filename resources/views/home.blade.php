@@ -10,7 +10,21 @@
 
 @section('content')
 
-<canvas id="canvas-grafico-circular" width="400" height="400"></canvas>
+<div class="row">
+    <div class="col-12 col-md-6 mt-3">
+        <canvas id="canvas-grafico-circular"></canvas>
+    </div>
+    <div class="col-12 col-md-6 mt-3">
+        @foreach ($inventario as $item)
+            <div class="card mb-1">
+                <div class="card-body">
+                    <p><strong>Sede:</strong> {{ $item->sede }}</p>
+                    <span><strong>Equipos:</strong> {{ $item->equipos }}</span>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 
 @endsection
 

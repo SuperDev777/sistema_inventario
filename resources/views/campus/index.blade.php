@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Equipos | Listar')
+@section('title', 'Sedes | Listar')
 
 @section('head')
 
@@ -14,45 +14,37 @@
     <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header">
-                Listado de equipos
-                <a href="{{ route('equipments.create') }}" class="btn btn-success btn-sm float-end">Nuevo</a>
+                Listado de sedes
+                <a href="{{ route('campus.create') }}" class="btn btn-success btn-sm float-end">Nuevo</a>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <a href="{{ route('equipments.exporExcel') }}" class="btn btn-success">EXCEL</a>
+                        <a href="{{ route('campus.exporExcel') }}" class="btn btn-success">EXCEL</a>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table id="table-equipments" class="table table-bordered table-hover">
                         <thead class="table-dark">
-                            <th>Sede</th>
-                            <th>Área</th>
-                            <th>Piso</th>
-                            <th>Código</th>
-                            <th>Tipo</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>N° Serie</th>
-                            <th>Adquisición</th>
-                            <th>Observación</th>
+                            <th>Nombre</th>
+                            <th>Departamento</th>
+                            <th>Provincia</th>
+                            <th>Distrito</th>
+                            <th>Dirección</th>
                             <th></th>
                             <th></th>
                         </thead>
                         <tbody>
-                            @foreach($equipments as $equipment)
+                            @foreach($campuses as $campus)
                             <tr>
-                                <td>{{ $equipment->campus->nombre }}</td>
-                                <td>{{ $equipment->codigo }}</td>
-                                <td>{{ $equipment->tipo }}</td>
-                                <td>{{ $equipment->marca }}</td>
-                                <td>{{ $equipment->modelo }}</td>
-                                <td>{{ $equipment->numserie }}</td>
-                                <td>{{ $equipment->adquisicion }}</td>
-                                <td>{{ $equipment->observacion }}</td>
-                                <td><a href="{{ route('equipments.edit', $equipment->id) }}" class="btn btn-primary">Editar</a></td>
+                                <td>{{ $campus->nombre }}</td>
+                                <td>{{ $campus->departamento }}</td>
+                                <td>{{ $campus->provincia }}</td>
+                                <td>{{ $campus->distrito }}</td>
+                                <td>{{ $campus->direccion }}</td>
+                                <td><a href="{{ route('campus.edit', $campus->id) }}" class="btn btn-primary">Editar</a></td>
                                 <td>
-                                    <form action="{{ route('equipments.destroy', $equipment->id) }}" method="POST">
+                                    <form action="{{ route('campus.destroy', $campus->id) }}" method="POST">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger">Eliminar</button>

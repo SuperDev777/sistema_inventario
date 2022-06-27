@@ -8,6 +8,7 @@ use App\Models\Area;
 use App\Models\DetailReceived;
 use App\Models\Received;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RecivedController extends Controller
 {

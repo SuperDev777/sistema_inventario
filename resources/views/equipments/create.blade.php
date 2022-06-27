@@ -12,8 +12,8 @@
 
 @section('content')
 
-<div class="row mt-5">
-    <div class="col-md-12">
+<div class="row">
+    <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header">
                 Crear equipos
@@ -36,27 +36,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Área <span class="text-danger">*</span></label>
-                            <div>
-                                <select class="form-area" id="select-area" name="area_id">
-                                    <option></option>
-                                    @foreach ($areas as $area)
-                                    <option @selected(old('area_id') == $area->id) value="{{ $area->id }}">{{ $area->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                @error('area_id')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Piso <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="input-piso" placeholder="piso" name="piso" value="{{ old('piso') }}">
-                            @error('piso')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
                             <label for="" class="form-label">Código <span class="text-danger">*</span></label>
@@ -234,17 +213,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <label for="" class="form-label">Adquisición <span class="text-danger">*</span></label>
-                            <select name="adquisicion" class="form-control">
-                                <option disabled selected>SELECCIONE</option>
-                                <option value="PROPIO" @selected(old('adquisicion') == 'PROPIO')>PROPIO</option>
-                                <option value="ARRENDADO" @selected(old('adquisicion') == 'ARRENDADO')>ARRENDADO</option>
-                            </select>
-                            @error('adquisicion')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
                         <div class="col-12">
                             <label for="" class="form-label">Observación</label>

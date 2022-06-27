@@ -16,8 +16,6 @@ class StoreEquipmentRequest extends FormRequest
     {
         return [
             'campus_id' => 'required',
-            'area_id' => 'required',
-            'piso' => 'required',
             'codigo' => 'required',
             'tipo' => 'required',
             'marca' => 'required',
@@ -29,7 +27,6 @@ class StoreEquipmentRequest extends FormRequest
             'tipodisco' => 'required',
             'capacidaddisco' => 'required',
             'sistemaoperativo' => 'required',
-            'adquisicion' => 'required',
             'observacion' => 'max:255',
             'user_id' => 'required',
         ];
@@ -39,8 +36,6 @@ class StoreEquipmentRequest extends FormRequest
     {
         return [
             'campus_id.required' => 'La sede es requerida.',
-            'area_id.required' => 'El área es requerida.',
-            'piso.required' => 'El piso es requerido.',
             'codigo.required' => 'El código es requerido.',
             'tipo.required' => 'El tipo es requerido.',
             'marca.required' => 'La marca es requerida.',
@@ -52,7 +47,6 @@ class StoreEquipmentRequest extends FormRequest
             'tipodisco.required' => 'El tipo de disco es requerido.',
             'capacidaddisco.required' => 'La capacidad de disco es requerida.',
             'sistemaoperativo.required' => 'El sistema operativo es requerido.',
-            'adquisicion.required' => 'La adquisición es requerida',
             'stock.required' => 'El stock es requerido',
             'observacion.max' => 'el maximo de caracteres son 255.',
             'user_id.required' => 'El suaurio es requerido.',

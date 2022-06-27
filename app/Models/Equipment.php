@@ -13,8 +13,6 @@ class Equipment extends Model
 
     protected $fillable = [
         'campus_id',
-        'area_id',
-        'piso',
         'codigo',
         'tipo',
         'marca',
